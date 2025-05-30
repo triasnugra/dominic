@@ -1,0 +1,59 @@
+                    +===============================================+
+                    |    🌐 LAYER: Content Delivery & Keamanan     |
+                    |-----------------------------------------------|
+                    | - Cloudflare (CDN, anti-DDoS)                |
+                    | - Akamai (CDN global)                        |
+                    | - SSL/TLS Encryption                         |
+                    +====================+========================+
+                                         |
+               +=========================v=========================+
+               |        ⚖️ LAYER: Load Balancer & Traffic Handler |
+               |----------------------------------------------------|
+               | - AWS ELB (Elastic Load Balancer)               |
+               | - Google Cloud Load Balancer                    |
+               +=========================+========================+
+                                         |
+           +=============================v=============================+
+           |           🖥️ LAYER: Front-End & UX Magic                   |
+           |------------------------------------------------------------|
+           | - React.js, Next.js, Vue.js (Web UI)                      |
+           | - React Native, Flutter (Mobile Apps)                     |
+           | - HTML5, CSS3, Bootstrap (Responsiveness bro!)            |
+           +=============================+=============================+
+                                         |
+         +===============================v===============================+
+         |            ⚙️ LAYER: Backend Logic & API Layer                 |
+         |----------------------------------------------------------------|
+         | - Node.js (API & Runtime)                                     |
+         | - Python + Django (Business Logic)                            |
+         | - Java + Spring Boot (Scalability stuff)                      |
+         +===============================+===============================+
+                                         |
+        +=================================v=================================+
+        |         💬 LAYER: Cache & Messaging (Real-Time Responsif)        |
+        |------------------------------------------------------------------|
+        | - Redis, Memcached (Cache gila cepet)                           |
+        | - RabbitMQ, Kafka (Messaging antar microservice)                |
+        +=================================+=================================+
+                                         |
+        +=================================v=================================+
+        |         🧠 LAYER: Machine Learning & Big Data                   |
+        |------------------------------------------------------------------|
+        | - TensorFlow, OpenCV (AI visual, rekomendasi fashion)           |
+        | - Hadoop, Apache Spark (Analitik & prediksi trend)              |
+        +=================================+=================================+
+                                         |
+        +=================================v=================================+
+        |               💾 LAYER: Database & Storage Core                 |
+        |------------------------------------------------------------------|
+        | - MySQL, MongoDB, HBase (User data, transaksi, inventory)       |
+        | - Amazon S3, GCP Cloud Storage (File & media storage)           |
+        +=================================+=================================+
+                                         |
+        +=================================v=================================+
+        |         🛠️ LAYER: DevOps, Monitoring & CI/CD Tools             |
+        |------------------------------------------------------------------|
+        | - Docker, Kubernetes (Container orchestration)                  |
+        | - Jenkins, GitHub Actions (CI/CD vibes)                         |
+        | - Grafana, Prometheus, ELK Stack (Monitoring & logs)            |
+        +==================================================================+

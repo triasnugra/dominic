@@ -29,29 +29,29 @@
     }
 
     main {
-      margin-top: 2rem;
+      margin: 2rem 0;
       width: 90%;
       max-width: 600px;
+    }
+
+    .card {
       background-color: white;
-      padding: 2rem;
+      margin-bottom: 1.2rem;
+      padding: 1.5rem;
       border-radius: 10px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease;
     }
 
-    ul {
-      list-style-type: none;
-      padding: 0;
-    }
-
-    li {
-      margin: 1rem 0;
+    .card:hover {
+      transform: translateY(-3px);
     }
 
     a {
       text-decoration: none;
-      color: #3498db;
-      font-weight: 500;
-      transition: color 0.3s ease;
+      color: #2c3e50;
+      font-size: 1.1rem;
+      font-weight: bold;
     }
 
     a:hover {
@@ -61,13 +61,18 @@
 </head>
 <body>
   <header>
-    <h1>Link Penting</h1>
+    <h1>Dominic's Template</h1>
   </header>
   <main>
-    <ul>
-      <li><a href="https://docs.google.com/spreadsheets/d/1FuTG2ftddvwYOCzKlCVk9mtOtht3KRxNdWF7Wxz7TU0/edit?usp=sharing">T1 Dominic</a></li>
-      <li><a href="https://docs.google.com/spreadsheets/d/1FgL91UTqH2mchrwRE7RQ6NYSwr7kr86HGkrrwIRJ-x4/edit?usp=sharing">T2 Dominic</a></li>
-    </ul>
+    <div class="card">
+      <a href="https://docs.google.com/spreadsheets/d/1FuTG2ftddvwYOCzKlCVk9mtOtht3KRxNdWF7Wxz7TU0/edit?usp=sharing" target="_blank">T1 Dominic</a>
+    </div>
+    <div class="card">
+      <a href="https://docs.google.com/spreadsheets/d/1FgL91UTqH2mchrwRE7RQ6NYSwr7kr86HGkrrwIRJ-x4/edit?usp=sharing" target="_blank">T2 Dominic</a>
+    </div>
+    <div class="card">
+      <a href="" target="_blank"></a>
+    </div>
   </main>
 </body>
 </html>

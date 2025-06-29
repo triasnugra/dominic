@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mindmap - SEO Plan</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 2rem;
+      font-family: "Segoe UI", sans-serif;
+      background: #fff;
+      overflow-x: auto;
+    }
+
+    .mindmap {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .node {
+      display: inline-block;
+      padding: 10px 20px;
+      color: white;
+      border-radius: 6px;
+      font-weight: bold;
+      position: relative;
+      margin-bottom: 1rem;
+      white-space: nowrap;
+    }
+
+    /* Colors */
+    .main { background: #0b5394; }
+    .blue { background: #1f4e79; }
+    .yellow { background: #f1c232; color: black; }
+    .orange { background: #f39c12; }
+    .red { background: #e74c3c; }
+    .line-group {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-left: 60px;
+      position: relative;
+    }
+
+    .subline {
+      margin-left: 40px;
+      margin-top: 10px;
+    }
+
+    /* Connector lines using pseudo-elements */
+    .connector::before {
+      content: "";
+      position: absolute;
+      left: -40px;
+      top: 50%;
+      width: 40px;
+      height: 2px;
+      background: #999;
+    }
+
+    .line-group::before {
+      content: "";
+      position: absolute;
+      left: -2px;
+      top: 20px;
+      width: 2px;
+      height: calc(100% - 20px);
+      background: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="mindmap">
+    <!-- Main Topic -->
+    <div class="node main">SEO Plan</div>
+
+    <!-- Level 1 Topics -->
+    <div class="line-group">
+
+      <!-- Target Audience -->
+      <div class="node blue connector">Target audience</div>
+      <div class="line-group">
+        <div class="node connector subline" style="background: transparent; color: black;">Business owner</div>
+        <div class="node connector subline" style="background: transparent; color: black;">Marketer</div>
+      </div>
+
+      <!-- Keyword Research -->
+      <div class="node yellow connector">Keyword research</div>
+      <div class="line-group">
+        <div class="node connector subline" style="background: transparent; color: black;">Current targeting</div>
+        <div class="node connector subline" style="background: transparent; color: black;">Plan to target</div>
+      </div>
+
+      <!-- SEO Optimization -->
+      <div class="node orange connector">SEO optimization</div>
+      <div class="line-group">
+        <div class="node connector subline" style="background: transparent; color: black;">SEO title, description</div>
+        <div class="node connector subline" style="background: transparent; color: black;">Keyword density</div>
+      </div>
+
+      <!-- Link Building Strategy -->
+      <div class="node red connector">Link building strategy</div>
+      <div class="line-group">
+        <div class="node connector subline" style="background: transparent; color: black;">Branding diversity</div>
+        <div class="node connector subline" style="background: transparent; color: black;">Get in-content diversity links</div>
+        <div class="node connector subline" style="background: transparent; color: black;">Move on to high power links</div>
+      </div>
+
+      <!-- Measuring Results -->
+      <div class="node yellow connector">Measuring results</div>
+      <div class="line-group">
+        <div class="node connector subline" style="background: transparent; color: black;">Keyword ranking</div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

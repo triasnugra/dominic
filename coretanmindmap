@@ -33,7 +33,7 @@
     .sub3     { background: #2ECC40; color: #fff; }
     .topik1   { background: #FFDC00; color: #000; border: 1px solid #999; }
     .topik2   { background: #FFB6C1; color: #000; border: 1px solid #999; }
-    .subtopik { background: #B10DC9; color: #fff; }
+    .topik3   { background: #B10DC9; color: #fff; }
     .subsub   { background: #7FDBFF; color: #000; font-weight: normal; }
 
     svg {
@@ -61,11 +61,11 @@
       <path d="M570 210 C650 210, 750 180, 950 180" stroke="#FF851B" stroke-width="2" fill="none"/>
       <path d="M570 210 C650 210, 750 220, 950 220" stroke="#FF851B" stroke-width="2" fill="none"/>
 
-      <!-- SEO optimization ke subtopik -->
+      <!-- SEO optimization ke topik3 -->
       <path d="M570 310 C650 310, 750 280, 950 280" stroke="#2ECC40" stroke-width="2" fill="none"/>
       <path d="M570 310 C650 310, 750 320, 950 320" stroke="#2ECC40" stroke-width="2" fill="none"/>
 
-      <!-- Subtopik ke sub-subtopik -->
+      <!-- topik3 ke sub-subtopik -->
       <path d="M1150 320 C1200 320, 1250 300, 1350 300" stroke="#7FDBFF" stroke-width="2" fill="none"/>
       <path d="M1150 320 C1200 320, 1250 340, 1350 340" stroke="#7FDBFF" stroke-width="2" fill="none"/>
     </svg>
@@ -83,8 +83,8 @@
     <div class="node topik2" style="top: 180px; left: 950px;">Current targeting</div>
     <div class="node topik2" style="top: 220px; left: 950px;">Plan to target</div>
 
-    <div class="node subtopik" style="top: 280px; left: 950px;">SEO title, description</div>
-    <div class="node subtopik" style="top: 320px; left: 950px;">Keyword density</div>
+    <div class="node topik3" style="top: 280px; left: 950px;">SEO title, description</div>
+    <div class="node topik3" style="top: 320px; left: 950px;">Keyword density</div>
 
     <div class="node subsub" style="top: 300px; left: 1350px;">Short tail keyword</div>
     <div class="node subsub" style="top: 340px; left: 1350px;">Long tail keyword</div>

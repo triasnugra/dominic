@@ -1,0 +1,141 @@
+<!DOCTYPE html> 
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mindmap Digital Marketing</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 2rem;
+      font-family: sans-serif;
+      background: #fff;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 3rem;
+    }
+
+    h2 {
+      color: #8B0000;
+      margin: 4rem 0 1rem;
+      text-align: center;
+    }
+
+    .container {
+      position: relative;
+      width: 1600px;
+      height: 800px;
+      margin: 0 auto;
+    }
+
+    .node {
+      position: absolute;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: bold;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .main     { background: #8B0000; color: #fff; }
+    .sub1     { background: #0074D9; color: #fff; }
+    .sub2     { background: #FF851B; color: #fff; }
+    .sub3     { background: #2ECC40; color: #fff; }
+    .topik1   { background: #FFDC00; color: #000; border: 1px solid #999; }
+    .topik2   { background: #FFB6C1; color: #000; border: 1px solid #999; }
+    .topik3   { background: #B10DC9; color: #fff; }
+    .subsub   { background: #7FDBFF; color: #000; font-weight: normal; }
+
+    svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      overflow: visible;
+    }
+  </style>
+</head>
+<body>
+  <h1>Mindmap Strategi Digital Marketing</h1>
+
+  <!-- Mindmap 1 -->
+  <h2>1. SEO Plan</h2>
+  <div class="container">
+    <svg width="1600" height="800">
+<!-- sub1 (Target audience) -->
+<path d="M300 200 C400 200, 450 100, 550 100" stroke="#0074D9" stroke-width="2" fill="none"/>
+
+<!-- sub2 (Keyword research) -->
+<path d="M300 200 C400 200, 450 200, 550 200" stroke="#FF851B" stroke-width="2" fill="none"/>
+
+<!-- sub3 (SEO optimization) -->
+<path d="M300 200 C400 200, 450 300, 550 300" stroke="#2ECC40" stroke-width="2" fill="none"/>
+
+<!-- topik1 (Business owner) -->
+<path d="M570 110 C650 110, 750 80, 950 80" stroke="#0074D9" stroke-width="2" fill="none"/>
+<path d="M570 110 C650 110, 750 120, 950 120" stroke="#0074D9" stroke-width="2" fill="none"/>
+
+<!-- topik2 (Current targeting & Plan to target) -->
+<path d="M570 210 C650 210, 750 180, 950 180" stroke="#FF851B" stroke-width="2" fill="none"/>
+<path d="M570 210 C650 210, 750 220, 950 220" stroke="#FF851B" stroke-width="2" fill="none"/>
+
+<!-- topik3 (SEO title, description & Keyword density) -->
+<path d="M570 310 C650 310, 750 280, 950 280" stroke="#2ECC40" stroke-width="2" fill="none"/>
+<path d="M570 310 C650 310, 750 320, 950 320" stroke="#2ECC40" stroke-width="2" fill="none"/>
+
+<!-- subsub (Short tail keyword & Long tail keyword) -->
+<path d="M1150 320 C1200 320, 1250 300, 1350 300" stroke="#7FDBFF" stroke-width="2" fill="none"/>
+<path d="M1150 320 C1200 320, 1250 340, 1350 340" stroke="#7FDBFF" stroke-width="2" fill="none"/>
+
+    </svg>
+    <div class="node main" style="top: 200px; left: 200px;">SEO Plan</div>
+    <div class="node sub1" style="top: 100px; left: 550px;">Target audience</div>
+    <div class="node sub2" style="top: 200px; left: 550px;">Keyword research</div>
+    <div class="node sub3" style="top: 300px; left: 550px;">SEO optimization</div>
+    <div class="node topik1" style="top: 80px; left: 950px;">Business owner</div>
+    <div class="node topik1" style="top: 120px; left: 950px;">Marketer</div>
+    <div class="node topik2" style="top: 180px; left: 950px;">Current targeting</div>
+    <div class="node topik2" style="top: 220px; left: 950px;">Plan to target</div>
+    <div class="node topik3" style="top: 280px; left: 950px;">SEO title, description</div>
+    <div class="node topik3" style="top: 320px; left: 950px;">Keyword density</div>
+    <div class="node subsub" style="top: 300px; left: 1350px;">Short tail keyword</div>
+    <div class="node subsub" style="top: 340px; left: 1350px;">Long tail keyword</div>
+  </div>
+
+  <!-- 4 mindmap berikutnya -->
+  <h2>2. Content Strategy</h2>
+  <div class="container">
+    <svg width="1600" height="800">
+      <path d="M300 200 C400 200, 450 100, 550 100" stroke="#0074D9" stroke-width="2" fill="none"/>
+      <path d="M300 200 C400 200, 450 200, 550 200" stroke="#FF851B" stroke-width="2" fill="none"/>
+      <path d="M300 200 C400 200, 450 300, 550 300" stroke="#2ECC40" stroke-width="2" fill="none"/>
+      <path d="M570 110 C650 110, 750 80, 950 80" stroke="#0074D9" stroke-width="2" fill="none"/>
+      <path d="M570 110 C650 110, 750 120, 950 120" stroke="#0074D9" stroke-width="2" fill="none"/>
+      <path d="M570 210 C650 210, 750 180, 950 180" stroke="#FF851B" stroke-width="2" fill="none"/>
+      <path d="M570 210 C650 210, 750 220, 950 220" stroke="#FF851B" stroke-width="2" fill="none"/>
+      <path d="M570 310 C650 310, 750 280, 950 280" stroke="#2ECC40" stroke-width="2" fill="none"/>
+      <path d="M570 310 C650 310, 750 320, 950 320" stroke="#2ECC40" stroke-width="2" fill="none"/>
+      <path d="M1150 320 C1200 320, 1250 300, 1350 300" stroke="#7FDBFF" stroke-width="2" fill="none"/>
+      <path d="M1150 320 C1200 320, 1250 340, 1350 340" stroke="#7FDBFF" stroke-width="2" fill="none"/>
+    </svg>
+    <div class="node main" style="top: 200px; left: 200px;">SEO Plan</div>
+    <div class="node sub1" style="top: 100px; left: 550px;">Target audience</div>
+    <div class="node sub2" style="top: 200px; left: 550px;">Keyword research</div>
+    <div class="node sub3" style="top: 300px; left: 550px;">SEO optimization</div>
+    <div class="node topik1" style="top: 80px; left: 950px;">Business owner</div>
+    <div class="node topik1" style="top: 120px; left: 950px;">Marketer</div>
+    <div class="node topik2" style="top: 180px; left: 950px;">Current targeting</div>
+    <div class="node topik2" style="top: 220px; left: 950px;">Plan to target</div>
+    <div class="node topik3" style="top: 280px; left: 950px;">SEO title, description</div>
+    <div class="node topik3" style="top: 320px; left: 950px;">Keyword density</div>
+    <div class="node subsub" style="top: 300px; left: 1350px;">Short tail keyword</div>
+    <div class="node subsub" style="top: 340px; left: 1350px;">Long tail keyword</div>
+  </div>
+
+  <!-- Lanjut ke Social Media Plan, Email Marketing Funnel, dan Performance Analytics -->
+  <!-- Semua instance class="node subtopik" sudah diganti ke class="node topik3" di seluruh bagian -->
+
+</body>
+</html>

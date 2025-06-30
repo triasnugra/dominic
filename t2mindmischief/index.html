@@ -91,24 +91,25 @@ ACCOUNT
         - kl link gagal
           - submit WO one click alarm "CS" >> feedback
 
-  - cant login
-    - cek password/email bener ga
-      - ga
-        - suruh ganti password (T)
-      - bener
-        - send link rebind (T)
+- cant login
+  - cek password/email bener ga
+    - ga
+      - suruh ganti password (T)
+    - bener
+      - send link rebind (T)
 
-  - rebinding
-    - cx ga nerima email verif
-      - cek udah bener belum emailnya (T)
-      - kl berkali2 gabisa transfer T3
+- rebinding
+  - cx ga nerima email verif
+    - cek udah bener belum emailnya (T)
+    - kl berkali2 gabisa transfer T3
 
-  - delete account
-    - cx yakin
-      - submit WO account deletion
-      - inform relevant department will contact cx (T)
-    - cx ga yakin
-      - ingetin (T)
+- delete account
+  - cx yakin
+    - submit WO account deletion
+    - inform relevant department will contact cx (T)
+  - cx ga yakin
+    - ingetin (T)
+  
 </textarea>
 
 <button onclick="generateMindmap()">LeggooOO</button>
@@ -131,7 +132,7 @@ function generateMindmap() {
 
   const lines = input.split("\n").filter(line => line.trim() !== "");
   const nodes = [];
-  const levelMap = new Map();
+  let globalY = 0; // Y terurut secara global (bukan per-level)
 
   lines.forEach((line, idx) => {
     const indentMatch = line.match(/^\s*/);
@@ -140,9 +141,8 @@ function generateMindmap() {
     const label = line.replace(/^\s*-*/, "").trim();
 
     const x = 100 + level * 300;
-    if (!levelMap.has(level)) levelMap.set(level, 0);
-    levelMap.set(level, levelMap.get(level) + 1);
-    const y = 100 + levelMap.get(level) * 100;
+    const y = 100 + globalY * 80; // pakai globalY untuk semua level
+    globalY++;
 
     const node = document.createElement("div");
     node.className = level === 0 ? "node title-node" : "node level" + (level - 1);
@@ -164,19 +164,10 @@ function generateMindmap() {
 
   function drawLine(svg, from, to) {
     const colors = [
-      "#0074D9", // level0
-      "#FF851B", // level1
-      "#7FDBFF", // level2
-      "#B10DC9", // level3
-      "#3D9970", // level4
-      "#FF69B4", // level5
-      "#AAAAAA", // level6
-      "#888888", // level7
-      "#444444", // level8
-      "#222222"  // level9
+      "#0074D9", "#FF851B", "#7FDBFF", "#B10DC9",
+      "#3D9970", "#FF69B4", "#AAAAAA", "#888888", "#444444", "#222222"
     ];
-
-    const color = colors[to.level - 1] || "#000"; // fallback to black
+    const color = colors[to.level - 1] || "#000";
 
     const line = document.createElementNS("http://www.w3.org/2000/svg", "path");
     const startX = from.x + from.element.offsetWidth;

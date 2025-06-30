@@ -12,15 +12,25 @@
       overflow: hidden;
       height: 100%;
     }
+    .topbar {
+      display: flex;
+      padding: 0.5rem;
+      gap: 1rem;
+      align-items: center;
+      background: #eee;
+    }
     textarea {
-      width: 100%;
+      width: 400px;
       height: 250px;
       font-family: monospace;
-      margin-bottom: 1rem;
+    }
+    button {
+      height: 40px;
+      padding: 0 1rem;
     }
     .scroll-container {
       width: 100vw;
-      height: 80vh;
+      height: calc(100vh - 300px);
       overflow: auto;
       position: relative;
       background: #f9f9f9;
@@ -29,6 +39,7 @@
       position: relative;
       min-width: 100%;
       min-height: 100%;
+      cursor: grab;
     }
     .node {
       position: absolute;
@@ -67,10 +78,8 @@
 </head>
 <body>
 
-<h2>T2 Mindmap</h2>
-
-<textarea id="inputText">
-ACCOUNT
+<div class="topbar">
+  <textarea id="inputText">ACCOUNT
 - different Account
   - suruh login di akun dia order
     - CX bisa
@@ -80,7 +89,7 @@ ACCOUNT
         - card, wallet, gift
       - insist gamau provide
         - lapor TL & transfer T3
-
+  
 - unbinding
   - cek beneran register ga
     - no
@@ -88,7 +97,7 @@ ACCOUNT
     - yes
       - guide to unbind (T)
       - assist pakai link (T)
-  
+
 - bind/ exchange email
   - bisa login
     - ya
@@ -143,10 +152,9 @@ PAYMENT
           - wait refund (T)
         - gak ada
           - submit WO repeat payment
-          - suruh nunggu 1 working day (T)
-</textarea>
-
-<button onclick="generateMindmap()">LeggooOO</button>
+          - suruh nunggu 1 working day (T)</textarea>
+  <button onclick="generateMindmap()">LeggooOO</button>
+</div>
 
 <div class="scroll-container">
   <div class="container" id="mindmap">
@@ -159,7 +167,6 @@ function generateMindmap() {
   const inputElement = document.getElementById("inputText");
   const container = document.getElementById("mindmap");
   const svg = document.getElementById("connections");
-
   if (!inputElement || !container || !svg) return;
 
   container.querySelectorAll(".node").forEach(n => n.remove());
@@ -227,6 +234,35 @@ function drawLine(svg, from, to) {
   line.setAttribute("fill", "none");
   svg.appendChild(line);
 }
+
+// Drag-to-scroll support
+const scrollContainer = document.querySelector(".scroll-container");
+let isDown = false;
+let startX, startY, scrollLeft, scrollTop;
+scrollContainer.addEventListener('mousedown', (e) => {
+  isDown = true;
+  scrollContainer.classList.add('active');
+  startX = e.pageX - scrollContainer.offsetLeft;
+  startY = e.pageY - scrollContainer.offsetTop;
+  scrollLeft = scrollContainer.scrollLeft;
+  scrollTop = scrollContainer.scrollTop;
+});
+scrollContainer.addEventListener('mouseleave', () => {
+  isDown = false;
+});
+scrollContainer.addEventListener('mouseup', () => {
+  isDown = false;
+});
+scrollContainer.addEventListener('mousemove', (e) => {
+  if (!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - scrollContainer.offsetLeft;
+  const y = e.pageY - scrollContainer.offsetTop;
+  const walkX = x - startX;
+  const walkY = y - startY;
+  scrollContainer.scrollLeft = scrollLeft - walkX;
+  scrollContainer.scrollTop = scrollTop - walkY;
+});
 </script>
 
 </body>

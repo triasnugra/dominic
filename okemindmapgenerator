@@ -18,7 +18,7 @@
     .container {
       position: relative;
       width: 3000px;
-      height: 2000px;
+      height: 3000px;
       border: 1px solid #ccc;
       margin: auto;
       background: #fff;
@@ -40,20 +40,23 @@
     .level5 { background: #3D9970; }
     .level6 { background: #FF69B4; }
     .level7 { background: #AAAAAA; }
+    .level8 { background: #888888; }
+    .level9 { background: #444444; }
+    .level10 { background: #222222; }
 
     svg {
       position: absolute;
       top: 0;
       left: 0;
       width: 3000px;
-      height: 2000px;
+      height: 3000px;
       pointer-events: none;
     }
   </style>
 </head>
 <body>
 
-<h2>Mindmap Hirarki (Judul → Subjudul → Topik → Subtopik → Sub-subtopik → Sub-sub-subtopik → dst)</h2>
+<h2>Mindmap Hirarki (Judul → Subjudul → Topik → Subtopik → dst)</h2>
 
 <textarea id="inputText">
 SEO Plan
@@ -72,6 +75,7 @@ SEO Plan
       - Example 2
         - book
           - novel
+            - genre
 </textarea>
 
 <button onclick="generateMindmap()">Buat Mindmap</button>
@@ -82,44 +86,45 @@ SEO Plan
 
 <script>
 function generateMindmap() {
-  const input = document.getElementById("inputText").value.trim();
+  const inputElement = document.getElementById("inputText");
+  if (!inputElement) return;
+  const input = inputElement.value.trim();
   const container = document.getElementById("mindmap");
   const svg = document.getElementById("connections");
+  if (!container || !svg) return;
+
   container.querySelectorAll(".node").forEach(n => n.remove());
   svg.innerHTML = "";
 
   const lines = input.split("\n").filter(line => line.trim() !== "");
-  const parents = [];
-  const levelCounters = Array(50).fill(0);
+  const nodes = [];
+  const levelMap = new Map();
 
   lines.forEach((line, idx) => {
-    const indent = line.match(/^\s*/)[0].length;
+    const indentMatch = line.match(/^\s*/);
+    const indent = indentMatch && indentMatch[0] ? indentMatch[0].length : 0;
     const level = Math.floor(indent / 2);
-    const label = line.replace(/^\s*-*/, '').trim();
-
-    const node = document.createElement("div");
-    node.className = `node level${level}`;
-    node.innerText = label;
-    container.appendChild(node);
+    const label = line.replace(/^\s*-*/, "").trim();
 
     const x = 100 + level * 300;
-    const y = 60 + levelCounters[level] * 100;
+    if (!levelMap.has(level)) levelMap.set(level, 0);
+    levelMap.set(level, levelMap.get(level) + 1);
+    const y = 60 + levelMap.get(level) * 100;
+
+    const node = document.createElement("div");
+    node.className = "node level" + level;
+    node.innerText = label;
     node.style.left = `${x}px`;
     node.style.top = `${y}px`;
+    container.appendChild(node);
 
-    const nodeData = { x, y, element: node };
-    parents[level] = nodeData;
-    levelCounters[level]++;
+    const nodeData = { x, y, element: node, level, idx };
+    nodes.push(nodeData);
 
-    // Hapus node parent level yang lebih dalam
-    for (let i = level + 1; i < parents.length; i++) {
-      parents[i] = undefined;
-    }
-
-    // Cari parent terdekat ke atas
-    for (let p = level - 1; p >= 0; p--) {
-      if (parents[p]) {
-        drawLine(svg, parents[p], nodeData);
+    // cari parent terakhir dengan level lebih kecil
+    for (let j = nodes.length - 2; j >= 0; j--) {
+      if (nodes[j].level < level) {
+        drawLine(svg, nodes[j], nodeData);
         break;
       }
     }
@@ -127,10 +132,10 @@ function generateMindmap() {
 
   function drawLine(svg, from, to) {
     const line = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    const startX = from.x + 100;
-    const startY = from.y + 20;
+    const startX = from.x + from.element.offsetWidth;
+    const startY = from.y + from.element.offsetHeight / 2;
     const endX = to.x;
-    const endY = to.y + 20;
+    const endY = to.y + to.element.offsetHeight / 2;
     const d = `M${startX},${startY} C${startX + 50},${startY} ${endX - 50},${endY} ${endX},${endY}`;
     line.setAttribute("d", d);
     line.setAttribute("stroke", "#666");

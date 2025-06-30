@@ -32,17 +32,21 @@
       white-space: nowrap;
       text-align: center;
     }
-    .level0 { background: #8B0000; }
-    .level1 { background: #0074D9; }
-    .level2 { background: #FF851B; }
-    .level3 { background: #7FDBFF; color: #000; font-weight: normal; }
-    .level4 { background: #B10DC9; }
-    .level5 { background: #3D9970; }
-    .level6 { background: #FF69B4; }
-    .level7 { background: #AAAAAA; }
-    .level8 { background: #888888; }
-    .level9 { background: #444444; }
-    .level10 { background: #222222; }
+    .title-node {
+      background: white;
+      color: red;
+      border: 3px solid black;
+    }
+    .level0 { background: #0074D9; }
+    .level1 { background: #FF851B; }
+    .level2 { background: #7FDBFF; color: #000; font-weight: normal; }
+    .level3 { background: #B10DC9; }
+    .level4 { background: #3D9970; }
+    .level5 { background: #FF69B4; }
+    .level6 { background: #AAAAAA; }
+    .level7 { background: #888888; }
+    .level8 { background: #444444; }
+    .level9 { background: #222222; }
 
     svg {
       position: absolute;
@@ -103,16 +107,16 @@ function generateMindmap() {
   lines.forEach((line, idx) => {
     const indentMatch = line.match(/^\s*/);
     const indent = indentMatch && indentMatch[0] ? indentMatch[0].length : 0;
-    const level = Math.floor(indent / 2);
+    const level = line.trim().startsWith("-") ? Math.floor(indent / 2) + 1 : 0;
     const label = line.replace(/^\s*-*/, "").trim();
 
     const x = 100 + level * 300;
     if (!levelMap.has(level)) levelMap.set(level, 0);
     levelMap.set(level, levelMap.get(level) + 1);
-    const y = 60 + levelMap.get(level) * 100;
+    const y = 100 + levelMap.get(level) * 100;
 
     const node = document.createElement("div");
-    node.className = "node level" + level;
+    node.className = level === 0 ? "node title-node" : "node level" + (level - 1);
     node.innerText = label;
     node.style.left = `${x}px`;
     node.style.top = `${y}px`;
@@ -121,7 +125,6 @@ function generateMindmap() {
     const nodeData = { x, y, element: node, level, idx };
     nodes.push(nodeData);
 
-    // cari parent terakhir dengan level lebih kecil
     for (let j = nodes.length - 2; j >= 0; j--) {
       if (nodes[j].level < level) {
         drawLine(svg, nodes[j], nodeData);

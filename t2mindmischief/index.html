@@ -109,8 +109,6 @@ ACCOUNT
       - inform relevant department will contact cx (T)
     - cx ga yakin
       - ingetin (T)
-
-      
 </textarea>
 
 <button onclick="generateMindmap()">LeggooOO</button>
@@ -165,6 +163,21 @@ function generateMindmap() {
   });
 
   function drawLine(svg, from, to) {
+    const colors = [
+      "#0074D9", // level0
+      "#FF851B", // level1
+      "#7FDBFF", // level2
+      "#B10DC9", // level3
+      "#3D9970", // level4
+      "#FF69B4", // level5
+      "#AAAAAA", // level6
+      "#888888", // level7
+      "#444444", // level8
+      "#222222"  // level9
+    ];
+
+    const color = colors[to.level - 1] || "#000"; // fallback to black
+
     const line = document.createElementNS("http://www.w3.org/2000/svg", "path");
     const startX = from.x + from.element.offsetWidth;
     const startY = from.y + from.element.offsetHeight / 2;
@@ -172,7 +185,7 @@ function generateMindmap() {
     const endY = to.y + to.element.offsetHeight / 2;
     const d = `M${startX},${startY} C${startX + 50},${startY} ${endX - 50},${endY} ${endX},${endY}`;
     line.setAttribute("d", d);
-    line.setAttribute("stroke", "#666");
+    line.setAttribute("stroke", color);
     line.setAttribute("stroke-width", "2");
     line.setAttribute("fill", "none");
     svg.appendChild(line);

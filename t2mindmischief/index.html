@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Doms Mindmap</title>
   <style>
-    body {
-      font-family: sans-serif;
-      padding: 2rem;
+    html, body {
       margin: 0;
+      padding: 0;
+      font-family: sans-serif;
       overflow: hidden;
+      height: 100%;
     }
     textarea {
       width: 100%;
@@ -17,11 +18,17 @@
       font-family: monospace;
       margin-bottom: 1rem;
     }
+    .scroll-container {
+      width: 100vw;
+      height: 80vh;
+      overflow: auto;
+      position: relative;
+      background: #f9f9f9;
+    }
     .container {
       position: relative;
-      width: 5000px;
-      height: 5000px;
-      background: #fff;
+      min-width: 100%;
+      min-height: 100%;
     }
     .node {
       position: absolute;
@@ -31,6 +38,7 @@
       font-weight: bold;
       white-space: nowrap;
       text-align: center;
+      z-index: 1;
     }
     .title-node {
       background: white;
@@ -52,9 +60,8 @@
       position: absolute;
       top: 0;
       left: 0;
-      width: 5000px;
-      height: 5000px;
       pointer-events: none;
+      z-index: 0;
     }
   </style>
 </head>
@@ -141,29 +148,30 @@ PAYMENT
 
 <button onclick="generateMindmap()">LeggooOO</button>
 
-<div class="container" id="mindmap">
-  <svg id="connections"></svg>
+<div class="scroll-container">
+  <div class="container" id="mindmap">
+    <svg id="connections"></svg>
+  </div>
 </div>
 
 <script>
 function generateMindmap() {
   const inputElement = document.getElementById("inputText");
-  if (!inputElement) return;
-  const input = inputElement.value.trim();
   const container = document.getElementById("mindmap");
   const svg = document.getElementById("connections");
-  if (!container || !svg) return;
+
+  if (!inputElement || !container || !svg) return;
 
   container.querySelectorAll(".node").forEach(n => n.remove());
   svg.innerHTML = "";
 
-  const lines = input.split("\n").filter(line => line.trim() !== "");
+  const lines = inputElement.value.trim().split("\n").filter(line => line.trim() !== "");
   const nodes = [];
   let globalY = 0;
 
   lines.forEach((line, idx) => {
-    const indentMatch = line.match(/^\s*/);
-    const indent = indentMatch && indentMatch[0] ? indentMatch[0].length : 0;
+    const indentMatch = line.match(/^(\s*)/);
+    const indent = indentMatch ? indentMatch[1].length : 0;
     const level = line.trim().startsWith("-") ? Math.floor(indent / 2) + 1 : 0;
     const label = line.replace(/^\s*-*/, "").trim();
 
@@ -189,25 +197,35 @@ function generateMindmap() {
     }
   });
 
-  function drawLine(svg, from, to) {
-    const colors = [
-      "#0074D9", "#FF851B", "#7FDBFF", "#B10DC9",
-      "#3D9970", "#FF69B4", "#AAAAAA", "#888888", "#444444", "#222222"
-    ];
-    const color = colors[to.level - 1] || "#000";
+  const maxX = Math.max(...nodes.map(n => n.x + n.element.offsetWidth));
+  const maxY = Math.max(...nodes.map(n => n.y + n.element.offsetHeight));
+  svg.setAttribute("width", maxX + 400);
+  svg.setAttribute("height", maxY + 400);
+  svg.style.width = `${maxX + 400}px`;
+  svg.style.height = `${maxY + 400}px`;
 
-    const line = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    const startX = from.x + from.element.offsetWidth;
-    const startY = from.y + from.element.offsetHeight / 2;
-    const endX = to.x;
-    const endY = to.y + to.element.offsetHeight / 2;
-    const d = `M${startX},${startY} C${startX + 50},${startY} ${endX - 50},${endY} ${endX},${endY}`;
-    line.setAttribute("d", d);
-    line.setAttribute("stroke", color);
-    line.setAttribute("stroke-width", "2");
-    line.setAttribute("fill", "none");
-    svg.appendChild(line);
-  }
+  container.style.width = `${maxX + 600}px`;
+  container.style.height = `${maxY + 600}px`;
+}
+
+function drawLine(svg, from, to) {
+  const colors = [
+    "#0074D9", "#FF851B", "#7FDBFF", "#B10DC9",
+    "#3D9970", "#FF69B4", "#AAAAAA", "#888888", "#444444", "#222222"
+  ];
+  const color = colors[to.level - 1] || "#000";
+
+  const line = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  const startX = from.x + from.element.offsetWidth;
+  const startY = from.y + from.element.offsetHeight / 2;
+  const endX = to.x;
+  const endY = to.y + to.element.offsetHeight / 2;
+  const d = `M${startX},${startY} C${startX + 50},${startY} ${endX - 50},${endY} ${endX},${endY}`;
+  line.setAttribute("d", d);
+  line.setAttribute("stroke", color);
+  line.setAttribute("stroke-width", "2");
+  line.setAttribute("fill", "none");
+  svg.appendChild(line);
 }
 </script>
 

@@ -8,6 +8,8 @@
     body {
       font-family: sans-serif;
       padding: 2rem;
+      margin: 0;
+      overflow: hidden;
     }
     textarea {
       width: 100%;
@@ -15,12 +17,17 @@
       font-family: monospace;
       margin-bottom: 1rem;
     }
+    .scroll-container {
+      width: 100vw;
+      height: 80vh;
+      overflow: auto;
+      border: 1px solid #ccc;
+      background: #f9f9f9;
+    }
     .container {
       position: relative;
-      width: 3000px;
-      height: 3000px;
-      border: 1px solid #ccc;
-      margin: auto;
+      width: 5000px;
+      height: 5000px;
       background: #fff;
     }
     .node {
@@ -52,8 +59,8 @@
       position: absolute;
       top: 0;
       left: 0;
-      width: 3000px;
-      height: 3000px;
+      width: 5000px;
+      height: 5000px;
       pointer-events: none;
     }
   </style>
@@ -91,31 +98,32 @@ ACCOUNT
         - kl link gagal
           - submit WO one click alarm "CS" >> feedback
 
-- cant login
-  - cek password/email bener ga
-    - ga
-      - suruh ganti password (T)
-    - bener
-      - send link rebind (T)
+  - cant login
+    - cek password/email bener ga
+      - ga
+        - suruh ganti password (T)
+      - bener
+        - send link rebind (T)
 
-- rebinding
-  - cx ga nerima email verif
-    - cek udah bener belum emailnya (T)
-    - kl berkali2 gabisa transfer T3
+  - rebinding
+    - cx ga nerima email verif
+      - cek udah bener belum emailnya (T)
+      - kl berkali2 gabisa transfer T3
 
-- delete account
-  - cx yakin
-    - submit WO account deletion
-    - inform relevant department will contact cx (T)
-  - cx ga yakin
-    - ingetin (T)
-  
+  - delete account
+    - cx yakin
+      - submit WO account deletion
+      - inform relevant department will contact cx (T)
+    - cx ga yakin
+      - ingetin (T)
 </textarea>
 
 <button onclick="generateMindmap()">LeggooOO</button>
 
-<div class="container" id="mindmap">
-  <svg id="connections"></svg>
+<div class="scroll-container">
+  <div class="container" id="mindmap">
+    <svg id="connections"></svg>
+  </div>
 </div>
 
 <script>
@@ -132,7 +140,7 @@ function generateMindmap() {
 
   const lines = input.split("\n").filter(line => line.trim() !== "");
   const nodes = [];
-  let globalY = 0; // Y terurut secara global (bukan per-level)
+  let globalY = 0;
 
   lines.forEach((line, idx) => {
     const indentMatch = line.match(/^\s*/);
@@ -141,7 +149,7 @@ function generateMindmap() {
     const label = line.replace(/^\s*-*/, "").trim();
 
     const x = 100 + level * 300;
-    const y = 100 + globalY * 80; // pakai globalY untuk semua level
+    const y = 100 + globalY * 80;
     globalY++;
 
     const node = document.createElement("div");

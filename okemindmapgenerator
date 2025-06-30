@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mindmap Hirarki</title>
+  <title>Doms Mindmap</title>
   <style>
     body {
       font-family: sans-serif;
@@ -60,26 +60,36 @@
 </head>
 <body>
 
-<h2>Mindmap Hirarki (Judul → Subjudul → Topik → Subtopik → dst)</h2>
+<h2>T2 Dominic</h2>
 
-<textarea id="inputText">
-SEO Plan
-- Target audience
-  - Business owner
-  - Marketer
-- Keyword research
-  - Current targeting
-  - Plan to target
-- SEO optimization
-  - SEO title, description
-  - Keyword density
-    - Short tail keyword
-    - Long tail keyword
-      - Example 1
-      - Example 2
-        - book
-          - novel
-            - genre
+<textarea id="inputText
+Payment
+CX cannot pay with wallet
+- CX provide
+  - no
+    - suruh provide (T)
+  - yes
+    - cek dulu
+      - account
+      - balance
+      - risk control
+
+Duplicate payment
+- skena 1
+  - cek yang berhasil salah 1 apa enggak
+    - suruh provide
+      - yes (T)
+      - no 
+        bikin WO duplicate payment (T)
+- skena 2
+  - ada duplicate
+    - cek WO
+      - test refund
+        - yes (T)
+        - no
+          - submit WO repeat payment
+          - cx nunggu 1 working day (T)
+
 </textarea>
 
 <button onclick="generateMindmap()">Buat Mindmap</button>

@@ -267,12 +267,26 @@ PAYMENT
         - ada WO (T)
         - ga ada WO suruh tunggu 1 working day (T)
 - payment deducted but unpaid cancel
-  - cek Refund Information & bagian Abnormal Scenario Refund form
-    - ada refund (T)
-    - ga ada refund
-      - cek WO channel feedback after order cancellation
-        - kl ada, suruh tunggu 1-3 working days (T)
-        - kl ga ada, lapor TL
+  - skena 1: success
+    - cek Refund Information & bagian Abnormal Scenario Refund form
+      - ada refund (T)
+      - ga ada refund
+        - cek WO channel feedback after order cancellation
+          - kl ada, suruh tunggu 1-3 working days (T)
+          - kl ga ada, lapor TL
+  - skena 2: failed
+    - cek pakai member ID
+      - bayar sukses buat orderan lain, same amount
+    - suruh provide screenshot
+      - pre authorized (T)
+    - kl ada Other Payment Status
+      - submit WO Payment Status Correction
+        suruh tunggu 1 -3 working days & (T)
+- payment success but confirmation not received
+  - suruh cek inbox emailnya (T)
+  - kl udah cek tetep ga nemu
+    - klik Member Profile >> Email sending record 
+  - kl udah sending record tetep gadapet, lapor TL
       
     </textarea>
     <button onclick="generateMindmap()">LeggooOO</button>

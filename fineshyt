@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Doms Mindmap</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .topbar {
+      padding: 0.5rem;
+      background: #eee;
+    }
+    .input-area {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    textarea {
+      width: 100%;
+      height: 130px;
+      font-family: monospace;
+      font-size: 12px;
+      resize: vertical;
+    }
+    button {
+      height: 40px;
+      padding: 0 1rem;
+    }
+    .scroll-container {
+      flex: 1;
+      overflow: auto;
+      position: relative;
+      background: #f9f9f9;
+    }
+    .container {
+      position: relative;
+      min-width: 100%;
+      min-height: 100%;
+    }
+    .node {
+      position: absolute;
+      padding: 10px 20px;
+      border-radius: 8px;
+      color: white;
+      font-weight: bold;
+      white-space: nowrap;
+      text-align: center;
+      z-index: 1;
+    }
+    .title-node {
+      background: white;
+      color: red;
+      border: 3px solid black;
+    }
+    .level0 { background: #0074D9; }
+    .level1 { background: #FF851B; }
+    .level2 { background: #7FDBFF; color: #000; font-weight: normal; }
+    .level3 { background: #B10DC9; }
+    .level4 { background: #3D9970; }
+    .level5 { background: #FF69B4; }
+    .level6 { background: #AAAAAA; }
+    .level7 { background: #888888; }
+    .level8 { background: #444444; }
+    .level9 { background: #222222; }
+
+    svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="input-area">
+    <textarea id="inputText">
+ACCOUNT
+- T2 GE 24 hours
+  - lucky draw, happy flip, magic draw, spin to win, puppy keep, money tree
+- event
+  - cek di Order reward activity participation record
+- gift card
+  - cek di Gift Card Management Platform US
+    - angka doang = beli
+    - huruf + angka = dapet dari event
+  - old gift card
+    - not receive >> 139494
+      - paid retention
+        - nunggu 1-7 working days
+      - paid waiting confirm (T)
+      - expired
+        - suruh order lagi (T)
+  - change gift card email, pastiin akun email sama
+    - suruh provide
+      - payment, sign in email, receive previous gift card
+        - bisa provide
+          - WO gift card modif feedback, input nama email
+          - nunggu 24-72 hours
+        - gabisa provide
+          - gabisa assist & bantu resend PIN ke email
+  - cancel gift card >> 159288
+- affiliate (T3)
+- coupon
+  - can not apply
+    - cek sebab
+      - supported site
+      - minimum amount
+      - validity period
+      - limit of time, etc
+- x >> 114034
+  - collab designer
+    - individual or institution
+- animal 
+  - ingredients >> 119214
+  - testing >> 119470
+- physical store
+  - ga ada, adanya Occasional flash store
+  - suruh pantau socmed
+- flash sale >> 123566
+- points
+  - daily check in 
+    - incorrect points >> 146426
+- modify pakai different account >> 141281
+  - suruh login order where located (T)
+    - cx bisa ke akun yang bener
+      - assist
+    - cx ga bisa 
+      - suruh provide Payment proof (T)
+        - boleh card, wallet, gift card
+        - ga mau provide 
+          - suruh tetep provide (T)
+          - insist gamau provide transfer T3
+  - nanya account info where order 
+    - suruh pakai Cant find your order? (T)
+- account unbinding/ mutus email
+  - cx ga register email tapi nerima email
+    - beneran registrasi enggak
+      - enggak
+        - transfer T3
+      - iya
+        - suruh copot email sendiri (T)
+        - kl insist kasih link unbinding (T)
+- bind email/exchange email >> 139420
+  - bisa login independently
+    - ya
+      - edit sendiri (T)
+    - enggak
+      - send link (T)
+        - link fails
+          - suruh provide screenshot & one click alarm (T)
+          - One click alarm >> submit WO >> customer service >> feed back
+- account rebinding/email baru >> 139420
+  - gabisa login
+    - wrong password/ wrong email
+      - no
+        - suruh ganti password (T)
+      - yes
+        - kasih link rebind (T)
+  - member behavior >> account change record
+- delete account >> 105668
+  - tanya dulu (T)
+    - iya
+      - Delete + (T)
+    - ragu2
+      - (T) aja
+- change password
+  - ganti sendiri (T)
+  - gabisa ganti sendiri
+    - suruh provide (T) 
+    - submit WO 
+      - success
+        - nunggu 2 working days bakalan dikirim ke email cx (T)
+      - fail/error
+        - (T)
+      - kl cx pengen dikirim ke email lain
+        - cek WO
+          - resolved/closed
+            - submit WO lagi masukin email lain
+          - pending
+            - close WO & resubmit WO
+     - >> risk order task >> reset password 
+- change phone number
+  - phone number independently
+    - suruh ganti sendiri (T)
+  - login independently tapi ga pakai phone numbernya lagi
+    - bisa
+      - suruh klik Didn't receive the code
+      - terus rebind new phone number
+    - fail (T)
+      - suruh tunggu 24jam
+      - atau re-register account
+  - ga bisa login independently (153082)
+    - send link
+- change email address
+  - suruh ganti sendiri
+  - kl gabisa ganti sendiri, send link (T)
+- unable place order (159382)
+- points >> 158372
+  - balance
+    - periode, use, refund deducted
+    - abnormal situation (T), lapor TL
+  - overcompensation
+    - marketing rules problem & web problem
+      - submit WO feedback
+      - nunggu 3-5 working days (T)
+    - issue lain, lapor TL
+  - ga dapet points (T)
+  - insist points (T)
+  - cx request overcompensation points
+    - ssms
+      
+PAYMENT
+- payment time limit
+  - 4 jam
+  - extend 24 jam (T)
+- payment canceled
+  -  ga bisa diextend, suruh repurchase (T)
+- installmnet payment
+  - afterpay & klarna
+- switch payment method
+  - paid
+    - gabisa diubah (T)
+  - unpaid
+    - reselect (T)
+- proof required >> 138946
+- cannot pay with wallet >> 158300
+  - suruh provide information
+  - cek
+    - login account, balance, order risk control
+- bayar pakai points cuma ngecover 50%
+- gabisa pakai coupon
+  - cek
+    - site, expired, wrong coupon code, minimum amount
+- payment failed/ unable to pay >> 159147
+  - card + apple pay + googlepay
+    - kasih tau sesuai template di Payment Search
+    - ga ada template pakai ssms (T)
+  - paypal + bnpl
+    - gaboleh kasih tau template di Payment Search
+    - pakainya template ssms (T)
+- duplicate payment >> 160479
+  - skena 1
+    - only one successful payment
+      - cek di menu Payment Information
+        - input member ID & cek combined payment amount
+      - suruh provide screenshot/ ada pre authorized
+        - ada (T)
+        - ga ada (T)
+          - submit WO (payment WO>> repeat payment)
+    - beneran ada duplicate payment
+      - cek di Payment Search
+        - ada WO (T)
+        - ga ada WO suruh tunggu 1 working day (T)
+- payment deducted but unpaid cancel
+  - skena 1: success
+    - cek Refund Information & bagian Abnormal Scenario Refund form
+      - ada refund (T)
+      - ga ada refund
+        - cek WO channel feedback after order cancellation
+          - kl ada, suruh tunggu 1-3 working days (T)
+          - kl ga ada, lapor TL
+  - skena 2: failed
+    - cek pakai member ID
+      - bayar sukses buat orderan lain, same amount
+    - suruh provide screenshot
+      - pre authorized (T)
+    - kl ada Other Payment Status
+      - submit WO Payment Status Correction & suruh tunggu 1 -3 working days & (T)
+- payment success but confirmation not received
+  - suruh cek inbox emailnya (T)
+  - kl udah cek tetep ga nemu
+    - klik Member Profile >> Email sending record 
+  - kl udah sending record tetep gadapet, lapor TL
+- payment platform complaint order
+  - paypal
+    - inform: freezing of funds & suruh cx cancel the complaint, terus contact lagi
+  - selain paypal
+    - inform: freezing of funds & kita udah contact card issuer + suruh tunggu 2 bulan
+- risk control >> 131247
+  - paid: auditing, confirming
+      
+CLUB
+- cek di Order Type >> Paid membership order
+- beli Club dapet Credit Reward
+- gabisa di transfer ke other account
+- SSMS: benefit, free trial, claim, purchase, discount amount, limit, items, site
+- didnt receive credit reward >> 160146
+- cant buy Club
+- club cancellation 
+  - auto renewal 
+    - member behavior
+      - paid membership signing details
+        - click cancel
+  - batalin aja
+    - member behavior
+      - paid membership purchase history
+        - copas order number
+          - hasilnya berhasil refund atau popup
+
+RETURN
+- return refund
+  - method 1
+    - kasih link return (T)
+  - method 2
+    - confirm return product & refund path (T)
+- return exchange >> 158786
+  - syarat kayak T1 reship
+- return multiple/single (T) >> 117218
+  - lebih dari 1 package di 1 order number, di package ke-2 atau ke-3 itu first return tetep free.
+- combine return, pickup address
+  - kl popup address beda, confirm ke cx pilih yang mana
+- return check: status Signed csp beranda, timeframe, click Return & probing refund path
+- status return
+  - Non return : udah pernah diapplied for return terus dicancel cx
+  - Did not return : udah di applied for return tapi barangnya belum direturn cx
+  - Shipping : barang udah transit / dikirim (cek di logistic)
+  - Signed : return parcel udah sampai di warehouse
+- timeframe
+  - cx 30 days & ce 37 days
+  - quality issue 90 days
+- nonreturn
+  - bodysuits, lingerie, jewelry, accessories, cosmetics, pet products, clereance items
+  - free gift & customized gabisa direturn sama sekali
+- return method
+  - RAN
+    - form: Return address + return ID
+    - fee: CX pay
+    - shipping: CX's decision
+    - CX harus provide proof return
+      - click return detail >> upload return shippinh 
+  - RL
+    - form: Picture or Link
+    - fee: free for 1st package, pilih USD 0.00, kl bukan 1st pilih USD 7.99
+    - shipping: designated
+    - kl ada merah2 di sblh shipping chanel (over weight) arahkan ke RAN
+  - change refund applied: yang boleh diubah cuma Change refund path
+  - pengen ubah 
+    - Return for Refund ke Return for Exchange atau Add item
+      - harus dalam kondisi: udah di applied for return tapi barangnya belum direturn cx dan cek spread
+      - Exchange info kosong berarti Return for Refund
+  - unable to return >> 158246
+  - returnless, barang gabisa dijual lagi >> 107570
+    - Partial return, tetep terima barang dan tetep terima refund (entah itu 50% atau 100%) 
+hal 12
+      
+    </textarea>
+    <button onclick="generateMindmap()">LeggooOO</button>
+  </div>
+</div>
+
+<div class="scroll-container">
+  <div class="container" id="mindmap">
+    <svg id="connections"></svg>
+  </div>
+</div>
+
+<script>
+function generateMindmap() {
+  const inputElement = document.getElementById("inputText");
+  const container = document.getElementById("mindmap");
+  const svg = document.getElementById("connections");
+  if (!inputElement || !container || !svg) return;
+
+  container.querySelectorAll(".node").forEach(n => n.remove());
+  svg.innerHTML = "";
+
+  const lines = inputElement.value.trim().split("\n").filter(line => line.trim() !== "");
+  const nodes = [];
+  let globalY = 0;
+
+  lines.forEach((line, idx) => {
+    const indentMatch = line.match(/^\s*/);
+    const indent = indentMatch ? indentMatch[0].length : 0;
+    const level = line.trim().startsWith("-") ? Math.floor(indent / 2) + 1 : 0;
+    const label = line.replace(/^\s*-*/, "").trim();
+
+    const x = 100 + level * 300;
+    const y = 100 + globalY * 80;
+    globalY++;
+
+    const node = document.createElement("div");
+    node.className = level === 0 ? "node title-node" : "node level" + (level - 1);
+    node.innerText = label;
+    node.style.left = `${x}px`;
+    node.style.top = `${y}px`;
+    container.appendChild(node);
+
+    const nodeData = { x, y, element: node, level, idx };
+    nodes.push(nodeData);
+
+    for (let j = nodes.length - 2; j >= 0; j--) {
+      if (nodes[j].level < level) {
+        drawLine(svg, nodes[j], nodeData);
+        break;
+      }
+    }
+  });
+
+  const maxX = Math.max(...nodes.map(n => n.x + n.element.offsetWidth));
+  const maxY = Math.max(...nodes.map(n => n.y + n.element.offsetHeight));
+  svg.setAttribute("width", maxX + 400);
+  svg.setAttribute("height", maxY + 400);
+  svg.style.width = `${maxX + 400}px`;
+  svg.style.height = `${maxY + 400}px`;
+
+  container.style.width = `${maxX + 600}px`;
+  container.style.height = `${maxY + 600}px`;
+}
+
+function drawLine(svg, from, to) {
+  const colors = [
+    "#0074D9", "#FF851B", "#7FDBFF", "#B10DC9",
+    "#3D9970", "#FF69B4", "#AAAAAA", "#888888", "#444444", "#222222"
+  ];
+  const color = colors[to.level - 1] || "#000";
+
+  const line = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  const startX = from.x + from.element.offsetWidth;
+  const startY = from.y + from.element.offsetHeight / 2;
+  const endX = to.x;
+  const endY = to.y + to.element.offsetHeight / 2;
+  const d = `M${startX},${startY} C${startX + 50},${startY} ${endX - 50},${endY} ${endX},${endY}`;
+  line.setAttribute("d", d);
+  line.setAttribute("stroke", color);
+  line.setAttribute("stroke-width", "2");
+  line.setAttribute("fill", "none");
+  svg.appendChild(line);
+}
+
+// Drag scroll
+const scrollContainer = document.querySelector(".scroll-container");
+let isDown = false, startX, startY, scrollLeft, scrollTop;
+
+scrollContainer.addEventListener('mousedown', e => {
+  isDown = true;
+  startX = e.pageX - scrollContainer.offsetLeft;
+  startY = e.pageY - scrollContainer.offsetTop;
+  scrollLeft = scrollContainer.scrollLeft;
+  scrollTop = scrollContainer.scrollTop;
+});
+scrollContainer.addEventListener('mouseleave', () => isDown = false);
+scrollContainer.addEventListener('mouseup', () => isDown = false);
+scrollContainer.addEventListener('mousemove', e => {
+  if (!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - scrollContainer.offsetLeft;
+  const y = e.pageY - scrollContainer.offsetTop;
+  scrollContainer.scrollLeft = scrollLeft - (x - startX);
+  scrollContainer.scrollTop = scrollTop - (y - startY);
+});
+</script>
+
+</body>
+</html>

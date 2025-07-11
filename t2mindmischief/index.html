@@ -470,10 +470,29 @@ REFUND
     - complaint order ask for refund >> 134706 
     - other 
       - ebanx
-        - 1. receive email & complete the bank account information
-        - 2. cx suruh tunggu 5 working days to confirm the payment results
-        
-
+        - receive email
+          - 1. complete the bank account information
+          - 2. cx suruh tunggu 5 working days to confirm the payment results
+        - not receive email
+          - correct email
+            - submit WO Refund failed follow up
+          - incorrect email
+            - refund to wallet: submit WO Return to Wallet 
+            - offline payment: submit WO Refund failed follow up
+              - 1. note the refund path as WO
+              - 2. cx suruh check email & fill account information
+      - not ebanx
+        - ada note
+          - process based CSP remark
+        - ga ada note
+          - ada WO Refund timeout
+            - diproses sesuai WO
+          - nggak ada WO Refund timeout
+            - within refund timeframe
+              - cx suruh tunggu
+            - exceed refund timeframe
+              - submit WO Refund timeout
+                - cx suruh tunffu 1-3 days.
     </textarea>
     <button onclick="generateMindmap()">LeggooOO</button>
   </div>

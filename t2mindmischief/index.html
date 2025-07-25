@@ -529,7 +529,34 @@ REFUND
             - disarankan untuk cek ulang detailnya di halaman atau notifikasi refund (T)
       - skena 3 : After-sales self-service solution selection
         - Biasanya untuk case quality issue, tergantung refund rate
-      HAL 20
+- NOT SIGNED NOT REFUNDED
+  - RL >> 135634
+    - ada logistic track
+      - in transit/ transport abnormality
+        - T (confirm pict of items)
+          - test refund
+            - succeed (T)
+            - failed (T)
+    - ga ada logistic track
+      - cancelled/ not returned
+        - cx provide return receipt
+          - test refund
+        - cx gabisa provide return receipt
+          - advise to wait package until received & contact logistic
+          - ,,,ga perlu submit WO return (T)
+  - RAN >> 135634
+    - ada logistic track
+      - cx provide return receipt
+        - parcel shipping time ≤ 10 days
+          - cx suruh wait (T 2-2)
+        - parcel shipping time > 10 days
+          - test refund
+            - succeed (T)
+            - failed (T)
+    - ga ada logistic track
+      - cx nggak bisa provide return receipt
+        - inform gabisa verify return details yet
+          - cx suruh nunggu (T 1-4)
 
       
     </textarea>

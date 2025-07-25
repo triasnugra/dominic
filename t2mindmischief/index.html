@@ -557,7 +557,35 @@ REFUND
       - cx nggak bisa provide return receipt
         - inform gabisa verify return details yet
           - cx suruh nunggu (T 1-4)
-
+    - Return back/delivered to sender
+      - kl beneran rts
+        - test refund
+          - success 
+            - suruh cx nunggu (T 3-1)
+          - failed
+            - feedback ke TL
+- DELIVERED BUT NOT REFUNDED >> 135630
+  - returned back to SHN
+    - delivered within 5 days
+      - template 5 days
+      - kl insist test refund aja
+    - delivered exceed 5 days
+      - confirm mana yg udah returned tapi belum refunded
+        - test refund
+          - succeed (T)
+           - failed (T)
+  - withdrawn from merchant
+    - cek return issue WO
+      - solved
+        - refund complete
+          - kasih info refund ke cx
+        - refund ga bisa
+          - refer to CSP remark
+          - no refund can be proceed (T 2-2)
+      - pending
+        - template 5 days
+        - suruh cx nunggu (T 2-1)
+  - warehouse have not unpacked >> 135630
       
     </textarea>
     <button onclick="generateMindmap()">LeggooOO</button>
